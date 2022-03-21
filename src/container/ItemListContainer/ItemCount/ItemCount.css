@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+.container-contador {
+    display: grid;
+    grid-template: 1fr / 1fr 1fr 1fr;
+    width: 140px;
+    height: 50px;
+    font-size: 25px;
+    margin-top: 40px;
+  }
+  
+  .count {
+    text-align: center;
+    height: 100%;
+    padding-top: 5px;
+    color: red;
+  }
+
+  .boton {
+    width: 100%;
+    height: 100%;
+    font-size: 30px;
+    border: none;
+    color: red;
+  }
+
+.agregar {
+    margin-top: 10px;
+    font-size: 20px;
+    border: 1px solid black;
+}
