@@ -18,3 +18,4 @@ export const getFetch = new Promise (( resolve, reject ) => {
         reject('400 not found')
     }
 })
+

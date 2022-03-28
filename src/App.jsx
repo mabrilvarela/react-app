@@ -1,8 +1,6 @@
 import NavBar from './components/NavBar/NavBar';
 import ItemListContainer from './container/ItemListContainer/ItemListContainer'
-import ItemCount from './container/ItemListContainer/ItemCount/ItemCount';
-import ItemList from './components/ItemList/ItemList';
-import Item from './components/Item';
+import ItemDetailContainer from './container/ItemDetailContainer/ItemDetailContainer';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -16,13 +14,9 @@ function App() {
 
         <NavBar />
 
-        <ItemListContainer greeting= 'Soy el desafío 5' />
+        <ItemListContainer />
 
-        <ItemCount />
-
-        <ItemList />
-
-        <Item />
+        <ItemDetailContainer />
 
     </div>
   );

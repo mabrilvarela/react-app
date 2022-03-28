@@ -1,38 +1,14 @@
-import {useState, useEffect} from 'react'
-import ItemList from '../../components/ItemList/ItemList'
-import { getFetch } from '../../helpers/getFetch' 
+import ItemList from '../../components/ItemList/ItemList' 
 
 import './ItemListContainer.css'
 
 
+function ItemListContainer() {    
 
-
-function ItemListContainer ({greeting}) {
-
-    const [productos, setProductos] = useState([])
-
-    const [loading, setLoading] = useState(true)
-
-    useEffect(() =>{
-
-        getFetch
-        .then(resp => setProductos(resp))
-        .catch()
-        .finally(() => setLoading(false))
-    })
-
-    return (
-
-        <div className='lista'>
-
-            {greeting}
-
+    return (  
             <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap'}}>
-                <ItemList productos={productos} />
-            </div>
-
-        </div>
-
+                { <ItemList /> }                
+            </div>        
     )
 }
 
