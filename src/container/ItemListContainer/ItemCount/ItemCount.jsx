@@ -6,13 +6,10 @@ import './ItemCount.css'
 function ItemCount({onAdd}) {
 
     const inicio = 1;
-
     const stock = 5;
-
     const [count, setCount] = useState(inicio);
 
     const añadirProd = (num) => {
-
         setCount(count + num);
     }
 

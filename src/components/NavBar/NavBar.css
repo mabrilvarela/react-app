@@ -1,4 +1,17 @@
-.carrito {
-    height: 25px;
-    margin-left: 800px;
+.barra {
+    background-color: darksalmon;
+    padding-top: 0rem;
+}
+
+.btn-barra {
+    color: black;
+    font-weight: bolder;
+    text-decoration: none;
+    padding: 0px 20px;
+}
+
+.btn-barra:hover {
+    color: white;
+    text-decoration-line: overline;
+    transition-duration: 0.4s;
 }

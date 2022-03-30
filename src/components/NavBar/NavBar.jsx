@@ -1,28 +1,30 @@
 import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
-import './NavBar.css';
+import CardWidget from '../CardWidget/CardWidget';
+import { NavLink } from 'react-router-dom';
 
+import './NavBar.css';
 
 function NavBar() {
 
-    return (
-
-        <Navbar bg="light" variant="light">
-        <Container>
-        <Navbar.Brand href="#home">Minder</Navbar.Brand>
+  return (
+    <Navbar className='barra'>
+      <Container fluid>
+        <NavLink to="/">
+          <img src="../../assets/logo.png" width='150px' height='110px' alt="logo" />
+        </NavLink>
         <Nav className="me-auto">
-          <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#nosotros">Nosotros</Nav.Link>
-          <Nav.Link href="#productos">Productos</Nav.Link>
-          <Nav.Link>
-           <img src='https://www.em-tools.es/media/faq/tmp/icon/shopping-cart-of-checkered-design.png' alt='icono-carrito' className='carrito' />
-          </Nav.Link>
+          <NavLink to="/" className="btn-barra">Inicio</NavLink>
+          <NavLink to="/categoria/perros" className="btn-barra">Perros</NavLink>
+          <NavLink to="/categoria/gatos" className="btn-barra">Gatos</NavLink>
+          <NavLink to='/cardWidget' className="btn-barra">
+            <CardWidget />
+          </NavLink>
         </Nav>
-        </Container>
-      </Navbar>
-
-    )
+      </Container>
+    </Navbar>
+  )
 }
 
 export default NavBar

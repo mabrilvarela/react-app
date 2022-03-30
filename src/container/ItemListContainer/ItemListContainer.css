@@ -1,7 +1,6 @@
-.lista {
-    width: 100%;
+.itemlist {
     display: flex;
-    justify-content: center;
-    font-weight: bolder;
-    font-size: 50px;
+    flex-direction: row;
+    flex-wrap: wrap; 
+    text-align: -webkit-Center;
 }
