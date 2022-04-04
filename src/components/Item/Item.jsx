@@ -1,6 +1,5 @@
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
-import ItemCount from '../../container/ItemListContainer/ItemCount/ItemCount'
 import { Link } from 'react-router-dom'
 
 import './Item.css'
@@ -18,7 +17,6 @@ function Item( {producto} ) {
                             <Card.Text className='card-text'>
                                 {producto.kg}
                             </Card.Text>
-                            <ItemCount />
                             <Link to={`/detail/${producto.id}`} >
                                 <Button variant="danger">
                                     Detalle del producto

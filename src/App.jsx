@@ -3,6 +3,7 @@ import CardWidget from './components/CardWidget/CardWidget';
 import NavBar from './components/NavBar/NavBar';
 import ItemListContainer from './container/ItemListContainer/ItemListContainer'
 import ItemDetailContainer from './container/ItemDetailContainer/ItemDetailContainer';
+import Cart from './components/Cart/Cart'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -18,6 +19,7 @@ function App() {
           <Route path="/categoria/:categoriaId" element={<ItemListContainer />} />
           <Route path="/detail/:detailId" element={<ItemDetailContainer />} />
           <Route path="/card" element={<CardWidget />} />
+          <Route path="/cart" element={<Cart />} />
           <Route path="/*" element={<Navigate to="/" replace /> } />
         </Routes>
     </BrowserRouter>

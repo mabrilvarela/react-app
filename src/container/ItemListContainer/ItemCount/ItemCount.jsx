@@ -1,5 +1,6 @@
 import React from 'react'
 import {useState} from 'react'
+import Intercamb from '../../../components/Intercamb/Intercamb';
 
 import './ItemCount.css'
 
@@ -36,18 +37,21 @@ function ItemCount({onAdd}) {
           +
         </button>
 
-      </div>  
 
-      <button 
-              className='agregar' 
-              onClick={() => onAdd(count)}
-              disabled={stock === 0 ? true : null}
-      >
-        Agregar
-      </button>
+      </div>
+
+    <Intercamb />
 
     </div>
   )
 }
 
 export default ItemCount
+
+//      <button 
+//              className='agregar' 
+//              onClick={() => onAdd(count)}
+ //             disabled={stock === 0 ? true : null}
+//      >
+//        Agregar
+//      </button>

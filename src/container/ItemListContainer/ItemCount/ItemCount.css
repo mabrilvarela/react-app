@@ -1,7 +1,6 @@
 .container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
   }
 
@@ -11,6 +10,7 @@
     width: 140px;
     height: 40px;
     font-size: 25px;
+    margin-bottom: 10px;
   }
   
   .count {
@@ -26,10 +26,5 @@
     font-size: 30px;
     border: none;
     color: red;
+    background-color: transparent;
   }
-
-.agregar {
-    margin: 15px 0px;
-    font-size: 20px;
-    border: 1px solid black;
-}
