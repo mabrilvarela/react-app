@@ -4,6 +4,7 @@ import NavBar from './components/NavBar/NavBar';
 import ItemListContainer from './container/ItemListContainer/ItemListContainer'
 import ItemDetailContainer from './container/ItemDetailContainer/ItemDetailContainer';
 import Cart from './components/Cart/Cart'
+import CartContextProvider from './context/CartContext';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -13,6 +14,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <CartContextProvider>
         <NavBar />
         <Routes>
           <Route path="/" element={<ItemListContainer />} />
@@ -22,6 +24,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/*" element={<Navigate to="/" replace /> } />
         </Routes>
+      </CartContextProvider>
     </BrowserRouter>
   );
 }

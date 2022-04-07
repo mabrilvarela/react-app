@@ -1,10 +1,17 @@
+import { useCartContext } from '../../context/CartContext'
 import ItemCount from '../../container/ItemListContainer/ItemCount/ItemCount'
-import Intercamb from '../../components/Intercamb/Intercamb'
-
 
 import './ItemDetail.css'
 
 function ItemDetail({ producto }) {
+
+  const {addToCart, cartList} = useCartContext()
+
+  function onAdd(cant) {
+    addToCart( {...producto, cantidad: cant} )
+  }
+
+  console.log(cartList);
 
   return (
     <div>
@@ -31,7 +38,7 @@ function ItemDetail({ producto }) {
             ${producto.precio}
           </div>
           <div>
-            <ItemCount />
+            <ItemCount inicio={1} stock={5} onAdd={onAdd} />
           </div>
         </div>
       </div>
