@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const CartContext = createContext([])
 
@@ -9,35 +9,34 @@ function CartContextProvider({ children }) {
 
     const [cartList, setCartList] = useState([])
 
-    function isInCart(id) {
-        const item = cartList.find(prod => prod.id === id)
-        if (item === undefined) {
-            return false
-        } else {
-            return true
-        }
-    }
+    const addToCart = (prod) => {
+        const isInCart = cartList.find((prodInCart) => prodInCart.id === prod.id)
 
-    const addToCart = (prod, id, counter) => {
-        if (isInCart(id)) {
-            const oldCart = cartList.find(prod => prod.id === id)
-            const newNumber = oldCart.newCant + counter
-            const newProduct = { id: prod.id, categoria: prod.categoria, nombre: prod.nombre, precio: prod.precio, kg: prod.kg, descripcion: prod.descripcion, img: prod.img, newCant: newNumber }
-            const noDuplicate = cartList.filter(prod => prod.id = !id)
-            const newCart = [...noDuplicate, newProduct]
-            setCartList(newCart)
+        if (isInCart) {
+            setCartList(
+                cartList.map((prodInCart) => {
+                    if (prodInCart.id === prod.id) {
+                        return { ...isInCart, amount: isInCart.amount + 1 }
+                    } else return prodInCart;
+                })
+            )
         } else {
-            const newItem = { id: prod.id, categoria: prod.categoria, nombre: prod.nombre, precio: prod.precio, kg: prod.kg, descripcion: prod.descripcion, img: prod.img }
-            setCartList([
-                ...cartList,
-                newItem
-            ])
+            setCartList([...cartList, { ...prod, amount: 1 }])
         }
-    }
 
-    const eliminateId = (id) => {
-        const idCart = cartList.filter(prod => prod.id !== id)
-        setCartList(idCart)
+    }
+    
+    const deleteProd = (prod) => {
+        const isInCart = cartList.find((prodInCart) => prodInCart.id === prod.id)
+        if (isInCart.amount === 1) {
+            setCartList(cartList.filter((prodInCart) => prodInCart.id !== prod.id))
+        } else {
+            setCartList((prodInCart) => {
+                if (prodInCart.id === prod.id) {
+                    return { ...isInCart, amount: isInCart.amount - 1 }
+                } else return prodInCart
+            })
+        }
     }
 
     const removeCart = () => {
@@ -48,8 +47,8 @@ function CartContextProvider({ children }) {
         <CartContext.Provider value={{
             cartList,
             addToCart,
-            removeCart,
-            eliminateId
+            deleteProd,
+            removeCart
         }}>
             {children}
         </CartContext.Provider>

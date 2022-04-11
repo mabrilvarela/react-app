@@ -5,13 +5,11 @@ import './ItemDetail.css'
 
 function ItemDetail({ producto }) {
 
-  const {addToCart, cartList} = useCartContext()
+  const { addToCart } = useCartContext()
 
   function onAdd(cant) {
-    addToCart( {...producto, cantidad: cant} )
+    addToCart({ ...producto, cantidad: cant })
   }
-
-  console.log(cartList);
 
   return (
     <div>

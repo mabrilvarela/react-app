@@ -1,48 +1,57 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { agregar } from '../../container/ItemListContainer/ItemCount/ItemCount'
+
 import './Intercamb.css'
 
 
-const ImputCount= () => {
+export const ImputCount = () => {
 
     return (
-        <Link to= '/cart' >
-            <button
-                className='btn btn-outline-success'>
-                Terminar compra
-            </button>
-        </Link>
+        <span>
+            <Link to='/' >
+                <button
+                    className='btn btn-outline-primary'>
+                    Seguir comprando
+                </button>
+            </Link>
+            <Link to='/cart' >
+                <button
+                    className='btn btn-outline-success'>
+                    Terminar compra
+                </button>
+            </Link>
+
+        </span>
     )
 }
 
-const ButtonCount= ({handleInter}) => {
+const ButtonCount = ({ handleInter }) => {
 
-    return <button 
-            className='btn btn-outline-danger'
-            onClick={handleInter}>
-            Agregar al carrito
-            </button>
+    return <button
+        className='btn btn-outline-danger'
+        onClick={handleInter}>
+        Agregar al carrito
+    </button>
 }
 
-const Intercamb= () => {
+const Intercamb = () => {
 
     const [inputType, setInputType] = useState('button')
 
-    const handleInter= () => {
+    const handleInter = () => {
         setInputType('input')
     }
 
-  return (
-    <div>
-        {
-            inputType === 'button' ?
-                <ButtonCount handleInter={handleInter} />
-            :
-                <ImputCount />
-        }
-    </div>
-  )
+    return (
+        <div>
+            {
+                inputType === 'button' ?
+                    <ButtonCount handleInter={handleInter} />
+                    :
+                    <ImputCount />
+            }
+        </div>
+    )
 }
 
 export default Intercamb
