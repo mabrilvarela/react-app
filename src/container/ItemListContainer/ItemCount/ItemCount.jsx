@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-import Intercamb, { ImputCount } from '../../../components/Intercamb/Intercamb';
+import { ImputCount } from '../../../components/Intercamb/Intercamb';
 
 import './ItemCount.css'
 
@@ -11,8 +11,9 @@ function ItemCount({ onAdd }) {
   const [count, setCount] = useState(inicio);
   const [change, setChange] = useState(false)
 
-  function onAdd() {
+  function onChange(cant) {
     setChange(true)
+    onAdd(cant)
   }
 
   const añadirProd = (num) => {
@@ -48,18 +49,17 @@ function ItemCount({ onAdd }) {
         <div>
           <button
             className='btn btn-outline-danger'
-            onClick={() => onAdd(count)}
+            onClick={() => onChange(count)}
             disabled={stock === 0 ? true : null}
           >
             Agregar al carrito
-
           </button>
         </div>
       ) :
         (
           <ImputCount />
           )
-      }
+        }
     </div>
   )
 }

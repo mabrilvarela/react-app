@@ -18,7 +18,7 @@ function NavBar() {
           <NavLink to="/" className="btn-barra">Inicio</NavLink>
           <NavLink to="/categoria/perros" className="btn-barra">Perros</NavLink>
           <NavLink to="/categoria/gatos" className="btn-barra">Gatos</NavLink>
-          <NavLink to='/cardWidget' className="btn-barra">
+          <NavLink to='/cart' className="btn-barra">
             <CardWidget />
           </NavLink>
         </Nav>

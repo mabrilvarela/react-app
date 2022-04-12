@@ -25,7 +25,7 @@ function CartContextProvider({ children }) {
         }
 
     }
-    
+
     const deleteProd = (prod) => {
         const isInCart = cartList.find((prodInCart) => prodInCart.id === prod.id)
         if (isInCart.amount === 1) {
@@ -43,15 +43,42 @@ function CartContextProvider({ children }) {
         setCartList([])
     }
 
+    const removeItem = id => {
+        cartList.forEach((item, index) => {
+            if (item.id === id) {
+                item.cantidad = 1;
+                cartList.splice(index, 1)
+            }
+        });
+        setCartList([...cartList])
+
+    }
+
+    const [total, setTotal] = useState(0)
+
+    useEffect(() => {
+        const getTotal = () => {
+            const resp = cartList.reduce((prev, item) => {
+                return prev + (item.precio * item.cantidad)
+            }, 0)
+            setTotal(resp)
+        }
+        getTotal()
+    }, [cartList])
+
+
     return (
         <CartContext.Provider value={{
             cartList,
             addToCart,
             deleteProd,
-            removeCart
+            removeCart,
+            removeItem,
+            total: [total, setTotal]
         }}>
             {children}
         </CartContext.Provider>
     )
 }
+
 export default CartContextProvider

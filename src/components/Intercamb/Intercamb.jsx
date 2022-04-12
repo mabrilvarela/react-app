@@ -25,7 +25,7 @@ export const ImputCount = () => {
     )
 }
 
-const ButtonCount = ({ handleInter }) => {
+export const ButtonCount = ({ handleInter }) => {
 
     return <button
         className='btn btn-outline-danger'
