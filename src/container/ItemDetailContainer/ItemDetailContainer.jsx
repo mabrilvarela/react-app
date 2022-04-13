@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
-import { getFetch } from "../../helpers/getFetch"
-import ItemDetail from "../../components/ItemDetail/ItemDetail"
 import { useParams } from "react-router-dom"
+import { doc, getDoc, getFirestore } from 'firebase/firestore'
 
+import ItemDetail from "../../components/ItemDetail/ItemDetail"
 
 
 function ItemDetailContainer() {
@@ -12,18 +12,13 @@ function ItemDetailContainer() {
   const { detailId } = useParams()
 
   useEffect(() => {
-    if (detailId) {
-      getFetch
-        .then(resp => setProducto(resp.find(prod => prod.id === detailId)))
-        .catch()
-        .finally(() => setLoading(false))
-    } else {
-      getFetch
-        .then(resp => setProducto(resp))
-        .catch()
-        .finally(() => setLoading(false))
-    }
-  }, [detailId])
+    const querydb = getFirestore()
+    const queryProd = doc(querydb, 'productos', detailId)
+    
+    getDoc(queryProd)
+    .then(resp => setProducto( { id: resp.id, ...resp.data()} ))
+    .finally(() => setLoading(false))
+  }, [])
 
   return (
     <div>

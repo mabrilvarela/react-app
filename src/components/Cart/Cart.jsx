@@ -4,7 +4,7 @@ import './Cart.css'
 
 function Cart() {
 
-  const { cartList, removeCart, removeItem, total } = useCartContext()
+  const { cartList, removeCart, removeItem, totalPrice } = useCartContext()
 
   return (
     <div className='cart'>
@@ -25,7 +25,7 @@ function Cart() {
                   Nombre: {prod.nombre}
                 </div>
                 <div>
-                  Subtotal: ${prod.precio}
+                  Precio por unidad: ${prod.precio}
                 </div>
                 <div>
                   Cantidad: {prod.cantidad}
@@ -33,14 +33,18 @@ function Cart() {
               </div>
               <div className='trash'>
                 <button onClick={() => removeItem(prod.id)}>
-                  <img src="https://www.shareicon.net/data/256x256/2016/01/05/698410_trash_512x512.png" alt="trash-icon" width='20px' height='20px' />
+                  <img 
+                  src="https://www.shareicon.net/data/256x256/2016/01/05/698410_trash_512x512.png" 
+                  alt="trash-icon" 
+                  width='20px' 
+                  height='20px' />
                 </button>
               </div>
             </div>)}
         </>
       }
       <div>
-        <h3>Total: ${total}</h3>
+        <h3>Total: ${totalPrice}</h3>
       </div>
       <div>
         <button className='btn btn-warning'

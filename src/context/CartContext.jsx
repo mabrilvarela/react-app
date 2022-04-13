@@ -23,7 +23,6 @@ function CartContextProvider({ children }) {
         } else {
             setCartList([...cartList, { ...prod, amount: 1 }])
         }
-
     }
 
     const deleteProd = (prod) => {
@@ -51,7 +50,6 @@ function CartContextProvider({ children }) {
             }
         });
         setCartList([...cartList])
-
     }
 
     const [total, setTotal] = useState(0)
@@ -74,7 +72,7 @@ function CartContextProvider({ children }) {
             deleteProd,
             removeCart,
             removeItem,
-            total: [total, setTotal]
+            totalPrice: [total, setTotal]
         }}>
             {children}
         </CartContext.Provider>
