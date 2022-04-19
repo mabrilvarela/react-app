@@ -32,7 +32,7 @@ function ItemListContainer() {
                 .finally(() => setLoading(false))
         }
 
-    }, [])
+    }, [categoriaId])
 
     return (
         <div>

@@ -18,7 +18,7 @@ function ItemDetailContainer() {
     getDoc(queryProd)
     .then(resp => setProducto( { id: resp.id, ...resp.data()} ))
     .finally(() => setLoading(false))
-  }, [])
+  }, [detailId])
 
   return (
     <div>

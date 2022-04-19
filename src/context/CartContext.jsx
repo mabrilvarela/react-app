@@ -52,18 +52,12 @@ function CartContextProvider({ children }) {
         setCartList([...cartList])
     }
 
-    const [total, setTotal] = useState(0)
 
-    useEffect(() => {
-        const getTotal = () => {
-            const resp = cartList.reduce((prev, item) => {
-                return prev + (item.precio * item.cantidad)
-            }, 0)
-            setTotal(resp)
-        }
-        getTotal()
-    }, [cartList])
-
+    const totalPrice = () => {
+        return cartList.reduce((prev, item) => {
+            return prev + (item.precio * item.cantidad)
+        }, 0)
+    }
 
     return (
         <CartContext.Provider value={{
@@ -72,7 +66,7 @@ function CartContextProvider({ children }) {
             deleteProd,
             removeCart,
             removeItem,
-            totalPrice: [total, setTotal]
+            totalPrice
         }}>
             {children}
         </CartContext.Provider>
