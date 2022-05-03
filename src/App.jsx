@@ -18,11 +18,11 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/" element={<ItemListContainer />} />
-          <Route path="/categoria/:categoriaId" element={<ItemListContainer />} />
+          <Route path="/category/:categoryId" element={<ItemListContainer />} />
           <Route path="/detail/:detailId" element={<ItemDetailContainer />} />
           <Route path="/card" element={<CardWidget />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/*" element={<Navigate to="/" replace /> } />
+          <Route path="/*" element={<Navigate to="/" replace />} />
         </Routes>
       </CartContextProvider>
     </BrowserRouter>

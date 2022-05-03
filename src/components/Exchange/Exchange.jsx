@@ -1,11 +1,10 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import './Intercamb.css'
+import './Exchange.css'
 
 
 export const ImputCount = () => {
-
     return (
         <span>
             <Link to='/' >
@@ -20,13 +19,11 @@ export const ImputCount = () => {
                     Terminar compra
                 </button>
             </Link>
-
         </span>
     )
 }
 
-export const ButtonCount = ({ handleInter }) => {
-
+const ButtonCount = ({ handleInter }) => {
     return <button
         className='btn btn-outline-danger'
         onClick={handleInter}>
@@ -34,7 +31,7 @@ export const ButtonCount = ({ handleInter }) => {
     </button>
 }
 
-const Intercamb = () => {
+const Exchange = () => {
 
     const [inputType, setInputType] = useState('button')
 
@@ -54,4 +51,4 @@ const Intercamb = () => {
     )
 }
 
-export default Intercamb
+export default Exchange

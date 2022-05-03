@@ -1,13 +1,12 @@
+import { NavLink } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import CardWidget from '../CardWidget/CardWidget';
-import { NavLink } from 'react-router-dom';
 
 import './NavBar.css';
 
 function NavBar() {
-
   return (
     <Navbar className='barra'>
       <Container fluid>
@@ -16,13 +15,13 @@ function NavBar() {
         </NavLink>
         <Nav className="me-auto">
           <NavLink to="/" className="btn-barra">Inicio</NavLink>
-          <NavLink to="/categoria/perros" className="btn-barra">Perros</NavLink>
-          <NavLink to="/categoria/gatos" className="btn-barra">Gatos</NavLink>
-          <NavLink to='/cart' className="btn-barra">
-            <CardWidget />
-          </NavLink>
+          <NavLink to="/category/perros" className="btn-barra">Perros</NavLink>
+          <NavLink to="/category/gatos" className="btn-barra">Gatos</NavLink>
         </Nav>
       </Container>
+      <NavLink to='/cart' className="btn-barra">
+        <CardWidget />
+      </NavLink>
     </Navbar>
   )
 }

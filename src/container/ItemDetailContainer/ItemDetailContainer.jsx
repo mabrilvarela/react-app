@@ -7,7 +7,7 @@ import ItemDetail from "../../components/ItemDetail/ItemDetail"
 
 function ItemDetailContainer() {
 
-  const [producto, setProducto] = useState({})
+  const [product, setProduct] = useState({})
   const [loading, setLoading] = useState(true)
   const { detailId } = useParams()
 
@@ -16,7 +16,7 @@ function ItemDetailContainer() {
     const queryProd = doc(querydb, 'productos', detailId)
     
     getDoc(queryProd)
-    .then(resp => setProducto( { id: resp.id, ...resp.data()} ))
+    .then(resp => setProduct( { id: resp.id, ...resp.data()} ))
     .finally(() => setLoading(false))
   }, [detailId])
 
@@ -24,7 +24,7 @@ function ItemDetailContainer() {
     <div>
       {loading ? <h3>Cargando...</h3> :
         <div>
-          <ItemDetail producto={producto} />
+          <ItemDetail product={product} />
         </div>
       }
     </div>

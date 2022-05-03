@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore'
 import { useParams } from 'react-router-dom'
+import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore'
 import ItemList from '../../components/ItemList/ItemList'
 
 import './ItemListContainer.css'
@@ -8,37 +8,30 @@ import './ItemListContainer.css'
 
 function ItemListContainer() {
 
-    const [productos, setProductos] = useState([])
+    const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
-    const { categoriaId } = useParams()
+    const { categoryId } = useParams()
 
     useEffect(() => {
-        if (categoriaId) {
-            const querydb = getFirestore()
-            const queryCollection = collection(querydb, 'productos')
-            const queryFilter = query(queryCollection,
-                where('categoria', '==', categoriaId)
+        const querydb = getFirestore()
+        const queryCollection = collection(querydb, 'productos')
+        const queryFilter = categoryId ?
+            query(queryCollection,
+                where('category', '==', categoryId)
             )
+            :
+            queryCollection
+        getDocs(queryFilter)
+            .then(resp => setProducts(resp.docs.map(item => ({ id: item.id, ...item.data() }))))
+            .finally(() => setLoading(false))
 
-            getDocs(queryFilter)
-                .then(resp => setProductos(resp.docs.map(item => ({ id: item.id, ...item.data() }))))
-                .finally(() => setLoading(false))
-        } else {
-            const querydb = getFirestore()
-            const queryCollection = collection(querydb, 'productos')
-
-            getDocs(queryCollection)
-                .then(resp => setProductos(resp.docs.map(item => ({ id: item.id, ...item.data() }))))
-                .finally(() => setLoading(false))
-        }
-
-    }, [categoriaId])
+    }, [categoryId])
 
     return (
         <div>
             {loading ? <h3>Cargando...</h3> :
                 <div className='itemlist'>
-                    <ItemList productos={productos} />
+                    <ItemList products={products} />
                 </div>
             }
         </div>

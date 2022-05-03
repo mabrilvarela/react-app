@@ -8,6 +8,9 @@
     font-weight: bolder;
     text-decoration: none;
     padding: 0px 20px;
+    width: 100%;
+    text-align: end;
+    margin-right: 50px;
 }
 
 .btn-barra:hover {

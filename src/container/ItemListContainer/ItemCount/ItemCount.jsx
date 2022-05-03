@@ -1,23 +1,32 @@
 import React from 'react'
 import { useState } from 'react'
-import { ImputCount } from '../../../components/Intercamb/Intercamb';
+import { ImputCount } from '../../../components/Exchange/Exchange';
+
 
 import './ItemCount.css'
 
 function ItemCount({ onAdd }) {
 
+  const [change, setChange] = useState(false)
   const inicio = 1;
   const stock = 5;
-  const [count, setCount] = useState(inicio);
-  const [change, setChange] = useState(false)
+  const [count, setCount] = useState(inicio)
 
-  function onChange(cant) {
+  function onChange(amount) {
+    onAdd(amount)
     setChange(true)
-    onAdd(cant)
   }
 
-  const añadirProd = (num) => {
-    setCount(count + num);
+  function add() {
+    if (count < stock) {
+      setCount(count + 1)
+    }
+  }
+
+  function eliminate() {
+    if (count > inicio) {
+      setCount(count - 1)
+    }
   }
 
   return (
@@ -27,8 +36,8 @@ function ItemCount({ onAdd }) {
 
         <button
           className='boton'
-          onClick={() => añadirProd(-1)}
-          disabled={count === inicio ? true : null}
+          onClick={() => eliminate()}
+
         >
           -
         </button>
@@ -37,8 +46,8 @@ function ItemCount({ onAdd }) {
 
         <button
           className='boton'
-          onClick={() => añadirProd(+1)}
-          disabled={count === stock ? true : null}
+          onClick={() => add()}
+
         >
           +
         </button>
@@ -50,7 +59,7 @@ function ItemCount({ onAdd }) {
           <button
             className='btn btn-outline-danger'
             onClick={() => onChange(count)}
-            disabled={stock === 0 ? true : null}
+
           >
             Agregar al carrito
           </button>
@@ -58,8 +67,8 @@ function ItemCount({ onAdd }) {
       ) :
         (
           <ImputCount />
-          )
-        }
+        )
+      }
     </div>
   )
 }

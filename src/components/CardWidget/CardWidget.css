@@ -1,17 +1,14 @@
 .carrito {
     height: 25px;
-    margin-left: 800px;
 }
 
 .itemTotal {
     position: absolute;
-    top: 3.2rem;
-    right: 4rem;
-    width: 1.5rem;
-    height: 1.5rem;
+    top: 2.5rem;
+    right: 3.5rem;
+    width: 1.3rem;
+    height: 1.3rem;
     border-radius: 50%;
-    background-color: gold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: indianred;
+    text-align: center;
 }

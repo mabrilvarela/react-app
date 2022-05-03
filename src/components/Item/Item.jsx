@@ -1,23 +1,22 @@
+import { Link } from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
-import { Link } from 'react-router-dom'
 
 import './Item.css'
 
-function Item( {producto} ) {
-
+function Item( {product} ) {
     return (
                 <div className='col-md-4'>
                     <Card style={{ width: '18rem', border: 'none' }}>
-                        <Card.Img variant="top" src={producto.img} className='img-main' />
+                        <Card.Img variant="top" src={product.img} className='img-main' />
                         <Card.Body className='card-body'>
                             <Card.Title>
-                                {producto.nombre}
+                                {product.name}
                             </Card.Title>
                             <Card.Text className='card-text'>
-                                {producto.kg}
+                                {product.kg}
                             </Card.Text>
-                            <Link to={`/detail/${producto.id}`} >
+                            <Link to={`/detail/${product.id}`} >
                                 <Button variant="danger">
                                     Detalle del producto
                                 </Button>

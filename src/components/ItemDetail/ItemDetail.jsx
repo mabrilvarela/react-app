@@ -3,12 +3,12 @@ import ItemCount from '../../container/ItemListContainer/ItemCount/ItemCount'
 
 import './ItemDetail.css'
 
-function ItemDetail({ producto }) {
+function ItemDetail({ product }) {
 
   const { addToCart } = useCartContext()
 
-  function onAdd(cant) {
-    addToCart({ ...producto, cantidad: cant })
+  function onAdd(amount) {
+    addToCart({ ...product, amount: amount })
   }
 
   return (
@@ -16,24 +16,25 @@ function ItemDetail({ producto }) {
       <div className='detail'>
         <div>
           <img
-            src={producto.img}
+            src={product.img}
+            alt="img-prod"
             style={{ marginLeft: '200px' }} />
         </div>
         <div className='detail-text'>
           <div
             style={{ fontSize: '25px', fontWeight: 'bolder' }}>
-            {producto.nombre}
+            {product.name}
           </div>
           <div>
-            {producto.descripcion}
+            {product.description}
           </div>
           <div
             style={{ fontSize: '17px', fontWeight: '500' }}>
-            {producto.kg}
+            {product.kg}
           </div>
           <div
             style={{ fontSize: '20px', fontWeight: 'bolder' }}>
-            ${producto.precio}
+            ${product.price}
           </div>
           <div>
             <ItemCount inicio={1} stock={5} onAdd={onAdd} />
